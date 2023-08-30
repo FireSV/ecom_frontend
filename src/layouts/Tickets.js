@@ -1,5 +1,5 @@
 // Chakra imports
-import { ChakraProvider, Portal, useDisclosure } from '@chakra-ui/react';
+import { ChakraProvider, Flex, Portal, SimpleGrid, useDisclosure } from '@chakra-ui/react';
 import Configurator from 'components/Configurator/Configurator';
 import Footer from 'components/Footer/Footer.js';
 // Layout components
@@ -13,50 +13,26 @@ import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 // Custom Chakra theme
 import theme from 'theme/theme.js';
-import FixedPlugin from '../components/FixedPlugin/FixedPlugin';
+import MainPanel from 'components/Layout/MainPanel';
+import FixedPlugin from 'components/FixedPlugin/FixedPlugin';
+import PanelContent from 'components/Layout/PanelContent';
+import PanelContainer from 'components/Layout/PanelContainer';
+import MiniStatistics from 'views/Dashboard/Dashboard/components/MiniStatistics';
+import { WalletIcon } from 'components/Icons/Icons';
+import TicketsView from 'views/Tickets/TicketsView';
+// import FixedPlugin from '../components/FixedPlugin/FixedPlugin';
 // Custom components
-import MainPanel from '../components/Layout/MainPanel';
-import PanelContainer from '../components/Layout/PanelContainer';
-import PanelContent from '../components/Layout/PanelContent';
-export default function Dashboard(props) {
+
+// import PanelContainer from '../components/Layout/PanelContainer';
+// import PanelContent from '../components/Layout/PanelContent';
+export default function Tickets(props) {
 	const { ...rest } = props;
 	const [sidebarVariant, setSidebarVariant] = useState('transparent');
 	const [fixed, setFixed] = useState(false);
 	const getRoute = () => {
 		return window.location.pathname !== '/admin/full-screen-maps';
 	};
-	const getActiveRoute = (routes) => {
-		let activeRoute = 'Default Brand Text';
-		try {
-			for (let i = 0; i < routes.length; i++) {
-				if (routes[i].name === "Dashboard") { return getActiveRoute(routes[i].views); }
-			}
-			return activeRoute;	
-		} catch (error) {
-			console.log("Fire", error);
-		}
-	};
 
-	
-	const getActiveNavbar = (routes) => {
-		console.log("1routes",routes);
-		let activeNavbar = false;
-		for (let i = 0; i < routes.length; i++) {
-			if (routes[i].category) {
-				let categoryActiveNavbar = getActiveNavbar(routes[i].views);
-				if (categoryActiveNavbar !== activeNavbar) {
-					return categoryActiveNavbar;
-				}
-			} else {
-				if (window.location.href.indexOf(routes[i].layout + routes[i].path) !== -1) {
-					if (routes[i].secondaryNavbar) {
-						return routes[i].secondaryNavbar;
-					}
-				}
-			}
-		}
-		return activeNavbar;
-	};
 
 	const { isOpen, onOpen, onClose } = useDisclosure();
 	document.documentElement.dir = 'ltr';
@@ -85,20 +61,26 @@ export default function Dashboard(props) {
 						{...rest}
 					/>
 				</Portal>
-			
 
-				{getRoute() ? (
-					<PanelContent>
-						<PanelContainer>
-							<Switch>
-							{<Route path={routes[0].layout + routes[0].path} component={routes[0].component} key={routes[0].key} />}
-							</Switch>
-						</PanelContainer>
-					</PanelContent>
-				) : null}
+
+
+				<PanelContent>
+					<PanelContainer>
+						<Switch>
+							{
+
+								<TicketsView></TicketsView>
+
+								// <Route path={routes[0].layout + routes[0].path} component={routes[0].component} key={routes[0].key} />
+
+							}
+						</Switch>
+					</PanelContainer>
+				</PanelContent>
+
 				<Footer />
 
-			
+
 				<Footer />
 				<Portal>
 					<FixedPlugin secondary={routes[0]} fixed={fixed} onOpen={onOpen} />

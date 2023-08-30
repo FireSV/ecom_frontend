@@ -8,6 +8,8 @@ import RTLLayout from "layouts/RTL.js";
 import Dashboard from "layouts/Admin";
 import { BrowserRouter } from "react-router-dom/cjs/react-router-dom.min";
 import ActiveUsers from "views/Dashboard/Dashboard/components/ActiveUsers";
+import Tickets from "layouts/Tickets";
+
 
 // ReactDOM.render(
 //   // <HashRouter basename="/admin/dashboard">
@@ -30,6 +32,8 @@ const App = () => {
   return (
     <BrowserRouter>
       <Switch>
+      <Route path={`/purchase-tickets`} component={Tickets} />
+
       <Route path={`/`} component={Dashboard} />
       </Switch>
     </BrowserRouter>

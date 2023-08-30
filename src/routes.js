@@ -16,6 +16,10 @@ import {
   RocketIcon,
   SupportIcon,
 } from "components/Icons/Icons";
+import Tickets from "layouts/Tickets";
+
+
+
 
 var dashRoutes = [
   {
@@ -24,6 +28,14 @@ var dashRoutes = [
     rtlName: "لوحة القيادة",
     icon: <HomeIcon color="inherit" />,
     component: Dashboard,
+    layout: "",
+  },
+  {
+    path: "/purchase-tickets",
+    name: "Tickets",
+    rtlName: "لوحة القيادة",
+    icon: <HomeIcon color="inherit" />,
+    component: Tickets,
     layout: "",
   },
   {

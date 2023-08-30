@@ -71,6 +71,8 @@ const BuiltByDevelopers = ({ title, name, description, image }) => {
             bg='teal.300'
             align='center'
             justify='center'
+            fontSize={30}
+            fontWeight={"bold"}
             borderRadius='15px'
             width={{ lg: "40%" }}
             minHeight={{ sm: "250px" }}>

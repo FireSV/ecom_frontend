@@ -70,19 +70,13 @@ export default function Dashboard() {
           description={
             "From colors, cards, typography to complex elements, you will find the full documentation."
           }
-          image={
-            <Image
-              src={logoChakra}
-              alt='chakra image'
-              minWidth={{ md: "300px", lg: "auto" }}
-            />
-          }
+          image={<div>#FIRE</div>}
         />
         <WorkWithTheRockets
           backgroundImage={peopleImage}
-          title={"Work with the rockets"}
+          title={"Dummy Data"}
           description={
-            "Wealth creation is a revolutionary recent positive-sum game. It is all about who takes the opportunity first."
+            "Fire"
           }
         />
       </Grid>
